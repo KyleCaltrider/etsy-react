@@ -50,7 +50,7 @@ body {
 #home {
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 100px;
 }
 #home img {
   width: 100%;
@@ -62,11 +62,9 @@ body {
 #home p {
   position: absolute;
   left: 2vw;
-  top: 2vw;
-  font-size: 3em;
+  top: 0vw;
+  font-size: 4em;
   font-family: 'Sacramento', cursive;
-  font-weight: bold;
-  max-width: 100px;
   color: white;
 }
 @media screen and (max-width: 600px) {
@@ -80,9 +78,10 @@ body {
 #nav-handle {
   display: block;
   position: fixed;
-  top: 3vw;
-  right: 3vw;
+  top: 15px;
+  right: 15px;
   cursor: pointer;
+  z-index: 10;
 }
 .bar {
   will-change: transform;
@@ -110,8 +109,7 @@ body {
   background-color: white;
   z-index: -10;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-
+  transition: opacity 0.4s ease-in-out;
   text-align: center;
 }
 #nav-overlay.active {
@@ -124,11 +122,26 @@ body {
 }
 .nav-text {
   /*border: solid 4px black;*/
-  margin: 10px 32vw;
+  margin: 10px 37vw;
   display: block;
   cursor: pointer;
   font-size: 10vw;
   font-family: 'Literate', 'serif';
+  position: relative;
+}
+.nav-text::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  transform: scale(0);
+  transition: all 0.3s ease-in-out;
+}
+.nav-text:hover:before {
+  transform: scaleX(1);
 }
 #social {
   margin-top: 5vh;
@@ -136,6 +149,12 @@ body {
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
+}
+.social-icon {
+  width: 100px;
+  height: 118px;
+  object-fit: cover;
+  font-size: 100%;
 }
 
 /* Shop */
@@ -188,6 +207,11 @@ body {
   align-items: center;
   margin-top: 5px;
 }
+.listing-title p {
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
 .listing-description {
   color: rgb(88, 88, 88);
   max-height: 100px;
@@ -212,14 +236,42 @@ body {
 }
 
 
-#test-container {
-  position: relative;
+/*  About  */
+#about {
   width: 100%;
-  max-height: 100px;
-  height: 100px;
-
-  vertical-align: middle;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-#test-container p {
+#about-welcome {
+  margin-top: 25px;
+  font-family: "Literata";
+  font-size: 4em;
+  text-decoration: underline;
+}
+#about-motto {
+  margin-top: 25px;
+  font-family: "Literata";
+  font-size: 2em;
+}
+#about-image {
+  object-fit: full;
+  max-width: 90%;
+  background-color: transparent;
+  margin: 50px 0px 25px 0px;
+}
+#about-description {
+  font-family: "Literata";
+  font-size: 1em;
+  padding: 0px 5vw 0px 5vw;
+}
+
+
+
+/*  Footer  */
+footer {
   text-align: center;
+  opacity: 0.4;
+  margin: 50px 0px 10px 0px;
 }
