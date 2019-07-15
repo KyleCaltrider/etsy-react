@@ -1,33 +1,225 @@
+/* Blank Slate For React */
+body, html, p, a, h1, h2, h3, h4, h5, h6, ul, li, div, nav, i, img, form, input, button {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-weight: normal;
+}
+ul, li {
+  list-style: none;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+#debug {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+
+
+/*---Start App CSS---*/
+html {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(218, 218, 218);  /* rgb(218, 218, 218) */
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+
 .App {
-  text-align: center;
+  
+  width: 100%;
+  height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Banner */
+
+#home {
+  position: relative;
+  width: 100%;
+  height: 250px;
+}
+#home img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+
+}
+#home p {
+  position: absolute;
+  left: 2vw;
+  top: 2vw;
+  font-size: 3em;
+  font-family: 'Sacramento', cursive;
+  font-weight: bold;
+  max-width: 100px;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+@media screen and (max-width: 600px) {
+  #home p {
+    display: none;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Navigation */
+
+#nav-handle {
+  display: block;
+  position: fixed;
+  top: 3vw;
+  right: 3vw;
+  cursor: pointer;
+}
+.bar {
+  will-change: transform;
+  width: 70px;
+  height: 8px;
+  background-color: white;
+  margin: 7px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+#bar2.active {
+  transform: translateY(-15px)
+}
+#bar3.active {
+  transform: translateY(-30px)
+}
+
+#nav-overlay {
+  display: block;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  z-index: -10;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+
+  text-align: center;
+}
+#nav-overlay.active {
+  opacity: 1;
+  z-index: 10;
+}
+#navigation {
+  text-align: center;
+  margin-top: 10vh;
+}
+.nav-text {
+  /*border: solid 4px black;*/
+  margin: 10px 32vw;
+  display: block;
+  cursor: pointer;
+  font-size: 10vw;
+  font-family: 'Literate', 'serif';
+}
+#social {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+/* Shop */
+
+#shop {
+  width: 100%;
+  text-align: center;
+}
+.listing {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  width: 300px;
+  background-color: white;
+  box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  transition: background-color 0.2s ease-in;
+  font-family: 'Literata', 'serfif';
+  z-index: 0;
+}
+.listing:hover {
+  cursor: pointer;
+  /*background-color: rgb(233, 233, 233);*/
+}
+.listing.active {
+  background-color: rgb(233, 233, 233);
+}
+.listing-img {
+  /*border: solid white 2px;*/
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  object-fit: cover;
+  transition: opacity 0.2s ease-in;
+}
+.listing-img.active {
+  opacity: 0.9;
+}
+.listing-price {
+  text-align: right;
+  display: block;
+  margin: 5px 10px 10px 0px;
+  color: rgb(88, 88, 88);
+}
+.listing-title {
+  display: flex;
+  font-size: 100%;
+  align-items: center;
+  margin-top: 5px;
+}
+.listing-description {
+  color: rgb(88, 88, 88);
+  max-height: 100px;
+  max-width: 100%;
+  overflow: scroll;
+  padding: 5px;
+  text-align: left;
+}
+.listing-buy {
+  position: absolute;
+  bottom: 300px;
+  left: 100px;
+  font-family: "Literata", "serif";
+  color: orange;
+  font-size: 3em;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+.listing-buy.active {
+  opacity: 1;
+}
+
+
+#test-container {
+  position: relative;
+  width: 100%;
+  max-height: 100px;
+  height: 100px;
+
+  vertical-align: middle;
+}
+#test-container p {
+  text-align: center;
 }
