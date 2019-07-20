@@ -8,7 +8,7 @@ class etsy {
    }
 
    async getListings(shop_id_or_name, limit) {
-      const url = this.base + "shops/" + shop_id_or_name + "/listings/active?api_key=" + process.env.REACT_APP_ETSY_API_KEY + "&limit=" + limit + "&includes=MainImage";
+      const url = this.base + "shops/" + shop_id_or_name + "/listings/active?api_key=" + process.env.ETSY_API_KEY + "&limit=" + limit + "&includes=MainImage";
       console.log("Etsy API request: ", url);
       const listings = await controller.get(url);
       return listings;

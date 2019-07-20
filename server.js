@@ -34,7 +34,7 @@ app.get('/admin', function (req, res) {
 
 app.get('/api/get-listings', async function (req, res) {
     console.log("Recieved Shop Listings Request");
-    const shopName = process.env.REACT_APP_SHOP;
+    const shopName = process.env.SHOP;
     let listings = await etsy.getListings(shopName, 50);
     let results = listings.data.results;
     res.json(results);
