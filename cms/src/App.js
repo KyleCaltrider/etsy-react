@@ -2,13 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 import ReactMarkdown from 'react-markdown';
 import './App.css';
-/*
-const INSTRUCTIONS = `
-## Start by selecting a page to update
-## Then select an element to update
-## Start making changes! You should see a preview of any site changes below. Feel free to toggle between desktop & mobile versions of your site
-`
-*/
+
 
 class App extends React.Component {
   constructor(props) {
