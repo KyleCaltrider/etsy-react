@@ -1,68 +1,19 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Etsy-React App
+## Main App
+This is a template web application intended for custom Etsy shops.
 
-## Available Scripts
+The landing page loads a particular Etsy Shop's active listings and displays each item for sale in a card. When a user clicks on a card it routes them directly to the purchase page on Etsy.
+Each card will render the items title, main image, description, and price/currency.
 
-In the project directory, you can run:
+## Content Management System
+The Administrator Portal can be accessed at the "/admin" route. Here, a site admin can manage the content displayed on the main app. Shop Name, Contact Email, and About page elements are all easily configurable out-of-the box. The "database-cli.js" tool can be used to seed a Mongo database with initial site content, as well as adding administrator user accounts. All passwords are hashed with bcrypt before storage.
 
-### `npm start`
+Source can be found in the "/cms" directory
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Server
+The backend is built on Node/Express. The server manages all Etsy API calls and proxys the site content between the database, CMS, and main app. It is secured with HelmetJS.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Needed Environmental Variables
+SHOP - The Etsy Shope Name, used in the API calls (This can be different from the chosen Shop Name managed via CMS)
+ETSY_API_KEY - developer API key aquired from Etsy
+MONGO_DB - URI for mongo database
