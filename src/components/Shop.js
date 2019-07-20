@@ -4,9 +4,11 @@ import React from 'react';
 function Shop(props) {
 
     function unrollListing(listing, stateIdx) {
+        // Derives a font-size and height style value for card titles
+        // Longer titles get a smaller font/more space and vice versa, 
         let length = listing.title.length,
-            fontSize = -0.00666 * length + 1.4,  //  Use style font-size: XX% to compensate for font-family differences
-            titleHeight = 0.5 * length + 50;
+            fontSize = -0.00666 * length + 1.4,  //  Use style font-size: XXX% to compensate for font-family differences
+            titleHeight = 0.5 * length + 50;    // TODO: Remove title height scaling...it works, but looks silly
         fontSize = fontSize > 1.2 ? 1.2 : fontSize < 0.8 ? 0.8 : fontSize;
         titleHeight = titleHeight > 100 ? 100 : titleHeight < 50 ? 50 : titleHeight;
         fontSize = fontSize.toString() + 'em';
