@@ -12,8 +12,8 @@ function Navigation(props) {
         </div>
         <div id="nav-overlay" className={props.nav} onClick={props.toggleNav}>
           <div id="social">
-            <a id="etsy" href={process.env.REACT_APP_ETSY}><img className="social-icon" src={EtsyLogo} alt="etsy link"></img></a>
-            <a id="facebook" href={process.env.REACT_APP_FACEBOOK}><img className="social-icon" src={FacebookLogo} alt="facebook link"></img></a>
+            <a id="etsy" href={props.renderElement("Home", "etsy", "https://www.etsy.com")}><img className="social-icon" src={EtsyLogo} alt="etsy link"></img></a>
+            <a id="facebook" href={props.renderElement("Home", "facebook", "https://www.facebook.com")}><img className="social-icon" src={FacebookLogo} alt="facebook link"></img></a>
           </div>
           <div id="navigation">
             <p className="nav-text" onClick={() => {props.changeDisplay('Home'); props.toggleNav();}}>Home</p>
