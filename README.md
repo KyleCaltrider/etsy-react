@@ -15,5 +15,7 @@ The backend is built on Node/Express. The server manages all Etsy API calls and 
 
 ### Needed Environmental Variables
 SHOP - The Etsy Shope Name, used in the API calls (This can be different from the chosen Shop Name managed via CMS)
+
 ETSY_API_KEY - developer API key aquired from Etsy
+
 MONGO_DB - URI for mongo database
