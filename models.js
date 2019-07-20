@@ -6,12 +6,18 @@ const cmsSchema = new mongoose.Schema({
     contents: {},
     modified: {type: Date, default: Date.now()}
 });
+
+
 const cmsAdminSchema = new mongoose.Schema({
     user: String,
     password: String
 });
+
+
 const cmsAdmin = mongoose.model('CMS Admin', cmsAdminSchema);
 const cmsPage = mongoose.model('CMS', cmsSchema);
+
+
 
 module.exports = {
     cmsAdmin: cmsAdmin,
