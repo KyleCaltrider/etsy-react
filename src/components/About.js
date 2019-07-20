@@ -1,5 +1,6 @@
 import React from 'react';
 import BriggsBanner from '../images/Briggs we got this_Blur_Large.png';
+import ReactMarkdown from 'react-markdown';
 
 function About(props) {
     const description = props.renderElement("About", "description", "Loading Site Description..."),
@@ -7,10 +8,10 @@ function About(props) {
           motto = props.renderElement("About", "motto", "Loading Site Motto...");
     return(
         <div id="about">
-            <h1 id="about-welcome">{welcome}</h1>
-            <h2 id="about-motto">{motto}</h2>
+            <ReactMarkdown className="about-welcome" source={welcome} />
+            <ReactMarkdown className="about-motto" source={motto} />
             <img id="about-image" src={BriggsBanner} />
-            <p id="about-description">{description}</p>
+            <ReactMarkdown className="about-description" source={description} />
         </div>
     )
 }

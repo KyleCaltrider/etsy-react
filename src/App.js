@@ -2,6 +2,7 @@ import React from 'react';
 import helpers from './helpers';
 import './App.css';
 import BriggsBanner from './images/Briggs we got this_Blur_Large.png';
+import ReactMarkdown from 'react-markdown';
 
 // Component Imports
 import About from './components/About';
@@ -131,7 +132,7 @@ class App extends React.Component {
         <Navigation toggleNav={this.toggleNav} nav={this.state.nav} changeDisplay={this.changeDisplay} renderElement={this.renderPageElement} />
         {this.renderDisplay()}
         <footer>
-          <p>{this.renderPageElement("Home", "shop", "Loading Shop...")} {year} | Design by Kyle Caltrider</p>
+          <ReactMarkdown source={this.renderPageElement("Home", "shop", "Loading Shop...") + " " + year + " | Design by Kyle Caltrider"} />
         </footer>
       </div>
     );

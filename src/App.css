@@ -243,13 +243,13 @@ body {
   flex-direction: column;
   align-items: center;
 }
-#about-welcome {
+.about-welcome {
   margin-top: 25px;
   font-family: "Literata";
   font-size: 4em;
   text-decoration: underline;
 }
-#about-motto {
+.about-motto {
   margin-top: 25px;
   font-family: "Literata";
   font-size: 2em;
@@ -260,7 +260,7 @@ body {
   background-color: transparent;
   margin: 50px 0px 25px 0px;
 }
-#about-description {
+.about-description {
   font-family: "Literata";
   font-size: 1em;
   padding: 0px 5vw 0px 5vw;
