@@ -104,7 +104,7 @@ app.post('/api/cms', async function (req, res) {
 });
 
 
-app.listen(5000);
+app.listen(process.env.PORT || 5000);
 
 
 async function addImagesToListing(listing) {
