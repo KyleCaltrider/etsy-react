@@ -27,6 +27,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // On page mount, retrieve site content and Etsy shop listings
     this.updatePages();
     this.getListings();
   }
@@ -82,6 +83,8 @@ class App extends React.Component {
   }
 
   handleListingHover(idx) {
+    // Toggles a listings hover property
+    // To be used primarily during mouse events
     const newListings = this.state.listings.map((l, i) => {
       if (i === idx) {
         !l.hover.length ? l.hover = "active" : l.hover = "";
@@ -92,6 +95,8 @@ class App extends React.Component {
   }
 
   renderDisplay() {
+    // Selectively renders View components based off the "display" state value.
+    // This should probably be replaced by BrowserRouter...but currently it works.
     const views = {
       'Home': <Shop handleListingHover={this.handleListingHover} listings={this.state.listings} renderElement={this.renderPageElement} />,
       'About': <About pages={this.state.pages} renderElement={this.renderPageElement} />
@@ -100,6 +105,11 @@ class App extends React.Component {
   };
 
   renderPageElement(page, el, alt) {
+    // Looks up and returns a particular site content element
+    // given a page [String] it's on, and what it's called [el: String].
+    // ex: page = "Home", el = "shop"
+    // Falls back to the alt [String] argument
+    
     const { pages } = this.state;
     page = pages.find(p => p.name === page);
     if (page) {
@@ -108,6 +118,7 @@ class App extends React.Component {
     else return alt;
   }
 
+  
   render() {
     let year = new Date();
     year = year.getFullYear();
