@@ -137,7 +137,7 @@ body {
   bottom: 0;
   left: 0;
   background-color: black;
-  transform: scale(0);
+  transform: scaleX(0);
   transition: all 0.3s ease-in-out;
 }
 .nav-text:hover:before {
@@ -171,7 +171,7 @@ body {
   background-color: white;
   box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
-  transition: background-color 0.2s ease-in;
+  transition: filter 0.2s ease-in;
   font-family: 'Literata', 'serfif';
   z-index: 0;
 }
@@ -180,7 +180,8 @@ body {
   /*background-color: rgb(233, 233, 233);*/
 }
 .listing.active {
-  background-color: rgb(233, 233, 233);
+  /*background-color: rgb(233, 233, 233);*/
+  filter: brightness(80%);
 }
 .listing-img {
   /*border: solid white 2px;*/
@@ -191,9 +192,6 @@ body {
   margin-bottom: 10px;
   object-fit: cover;
   transition: opacity 0.2s ease-in;
-}
-.listing-img.active {
-  opacity: 0.9;
 }
 .listing-price {
   text-align: right;
@@ -229,10 +227,11 @@ body {
   font-size: 3em;
   z-index: 5;
   opacity: 0;
-  transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in, filter 0.2s ease-in;
 }
 .listing-buy.active {
   opacity: 1;
+  filter: brightness(150%);
 }
 
 

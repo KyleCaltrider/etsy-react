@@ -16,9 +16,9 @@ function Navigation(props) {
             <a id="facebook" href={process.env.REACT_APP_FACEBOOK}><img className="social-icon" src={FacebookLogo} alt="facebook link"></img></a>
           </div>
           <div id="navigation">
-            <a href="#home" className="nav-text" onClick={() => {props.changeDisplay('Home'); props.toggleNav();}}>Home</a>
+            <p className="nav-text" onClick={() => {props.changeDisplay('Home'); props.toggleNav();}}>Home</p>
             <p className="nav-text" onClick={() => {props.changeDisplay('About'); props.toggleNav();}}>About</p>
-            <a id="email" className="nav-text" href={"mailto:"+process.env.REACT_APP_EMAIL}>Email</a>
+            <a id="email" className="nav-text" href={"mailto:"+props.renderElement("Home", "email", "")}>Email</a>
           </div>
         </div>
       </div>

@@ -1,0 +1,185 @@
+#header {
+  text-align: center;
+}
+#editor-options {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.edit-select {
+  width: 250px;
+  height: 50px;
+}
+#editor-container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#editor-container button {
+  margin-top: 10px;
+  width: 60%;
+  height: 30px;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 0.9em;
+  border: solid 1px lightgrey;
+}
+#editor-container button:hover {
+  border: solid 2px rgb(74, 74, 255);
+}
+#editor-container button:focus {
+  outline: none;
+  border: solid 2px rgb(74, 74, 255);
+}
+#editor {
+  width: 60%;
+  margin-top: 20px;
+  border: solid 1.2px lightgrey;
+  border-radius: 10px;
+  padding: 10px;
+}
+#editor:focus {
+  outline: none;
+  border: solid 2px rgb(74, 74, 255);
+}
+.preview {
+  width: 70%;
+  height: 200px;
+  text-align: left;
+  overflow-y: scroll;
+  overflow-wrap: normal;
+  border: solid 1.2px lightgrey;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 10px;
+}
+#admin-message-container {
+  position: relative;
+  width: 70%;
+  min-width: 300px;
+  min-height: 100px;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 20px;
+  z-index: 10;
+  padding: 10px;
+  border: solid 1.5px lightgrey;
+  background-color: white;
+}
+#admin-message-container.fail {
+  border-color: rgb(255, 23, 23);
+}
+#admin-message-container.success {
+  border-color: rgb(39, 255, 39);
+}
+.close {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  border: solid 1.2px lightgrey;
+  /*transition: border 0.1s ease-in-out;*/
+  transition: filter 0.2s ease-in-out;
+}
+.close:hover {
+  border: solid 1.2px darkgrey;
+  filter: brightness(60%);
+}
+.barL {
+  position: absolute;
+  width: 80%;
+  height: 5px;
+  transform-origin: center;
+  transform: rotate(45deg);
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+.barR {
+  position: absolute;
+  width: 80%;
+  height: 5px;
+  transform-origin: center;
+  transform: rotate(-45deg);
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 35vh;
+  left: 0;
+}
+
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  border: solid 1px rgb(74, 74, 255);
+  border-radius: 5px;
+  padding: 10px;
+  width: 350px;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+#login input {
+  margin: 5px;
+  width: 70%;
+  border: solid black 1px;
+  border-radius: 5px;
+  padding: 5px;
+}
+#login input:focus {
+  outline: none;
+  border: solid 2px rgb(74, 74, 255);
+}
+#login button {
+  margin: 5px;
+  background-color: white;
+  font-size: 0.9em;
+  width: 70%;
+  height: 30px;
+  border-radius: 5px;
+}
+#login button:hover {
+  border: solid 2px rgb(74, 74, 255);
+}
+#login button:focus {
+  outline: none;
+  border: solid 2px rgb(74, 74, 255);
+}
+
+@media screen and (max-width: 500px) {
+  #editor-options {
+    flex-direction: column;
+    align-items: center;
+  }
+  #editor {
+    width: 90%;
+  }
+  .preview {
+    width: 90%;
+  }
+  .edit-select {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  #login {
+    width: 90%;
+  }
+}

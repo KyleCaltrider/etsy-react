@@ -8,17 +8,6 @@ import About from './components/About';
 import Shop from './components/Shop';
 import Navigation from './components/Navigation';
 
-const testListing = {
-  "currency_code": "USD",
-  "price": "0.20",
-  "description": helpers.randomWords(40),
-  "title": helpers.randomWords(4),  // "Test Item 1"
-  "MainImage": {"url_570xN": "https://i.etsystatic.com/20648106/r/il/2bb914/1987336315/il_570xN.1987336315_hqs1.jpg"},
-  "listing_id": "987583457",
-  "url": "https://www.etsy.com/listing/706886826/test-item-1?utm_source=tntbriggsdesign&utm_medium=api&utm_campaign=api",
-  "hover": ""
-}
-
 
 class App extends React.Component {
   constructor(props) {
@@ -26,29 +15,19 @@ class App extends React.Component {
     this.state = {
       nav: "",
       display: "Home",
-      listings: []
+      listings: [],
+      pages: []
     }
-    this.logState = this.logState.bind(this);
     this.toggleNav = this.toggleNav.bind(this);
     this.changeDisplay = this.changeDisplay.bind(this);
     this.handleListingHover = this.handleListingHover.bind(this);
     this.renderDisplay = this.renderDisplay.bind(this);
+    this.updatePages = this.updatePages.bind(this);
+    this.renderPageElement = this.renderPageElement.bind(this);
   }
 
-  logState() {
-    if (this.state.listings.length < 1) {
-      let testListings = [];
-      for (let i = 0; i < 50; i++) {
-        let newListing = Object.assign({}, testListing);
-        newListing.listing_id = [...Array(10)].map(x => Math.floor(Math.random() * 10)).join("");
-        testListings.push(newListing);
-      }
-      console.log(testListings);
-      this.setState({listings: testListings});
-    }
-  };
-
   componentDidMount() {
+    this.updatePages();
     this.getListings();
   }
 
@@ -60,7 +39,7 @@ class App extends React.Component {
     this.setState({display: view});
   }
 
-  async getListings() {
+  getListings() {
     const xhr = new XMLHttpRequest();
     xhr.onload = async () => {
       if (xhr.response) {
@@ -72,7 +51,6 @@ class App extends React.Component {
             return l;
           });
           if (listings.length > 0) {
-            console.log(listings);
             this.setState({listings: listings})
           }
         }
@@ -82,6 +60,24 @@ class App extends React.Component {
       }
     }
     xhr.open('GET', "/api/get-listings");
+    xhr.send();
+  }
+
+  updatePages() {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = async() => {
+      if (xhr.response) {
+        try {
+          let pages = await JSON.parse(xhr.response);
+          console.log(pages);
+          this.setState({pages: pages});
+        }
+        catch(err) {
+          console.error(err);
+        }
+      }
+    }
+    xhr.open("GET", "/api/update");
     xhr.send();
   }
 
@@ -97,26 +93,34 @@ class App extends React.Component {
 
   renderDisplay() {
     const views = {
-      'Home': <Shop handleListingHover={this.handleListingHover} listings={this.state.listings} />,
-      'About': <About />
+      'Home': <Shop handleListingHover={this.handleListingHover} listings={this.state.listings} renderElement={this.renderPageElement} />,
+      'About': <About pages={this.state.pages} renderElement={this.renderPageElement} />
     };
     return views[this.state.display];
   };
+
+  renderPageElement(page, el, alt) {
+    const { pages } = this.state;
+    page = pages.find(p => p.name === page);
+    if (page) {
+      return page.contents[el]
+    }
+    else return alt;
+  }
 
   render() {
     let year = new Date();
     year = year.getFullYear();
     return (
       <div className="App">
-        <button id="debug" onClick={this.logState}>DEBUG HELPER</button>
         <header id="home">
           <img src={BriggsBanner} alt="Banner reads: Briggs we got this"/>
-          <p>T.n.T Briggs Design</p>
+          <p>{this.renderPageElement("Home", "shop", "Loading Shop...")}</p>
         </header>
-        <Navigation toggleNav={this.toggleNav} nav={this.state.nav} changeDisplay={this.changeDisplay} />
+        <Navigation toggleNav={this.toggleNav} nav={this.state.nav} changeDisplay={this.changeDisplay} renderElement={this.renderPageElement} />
         {this.renderDisplay()}
         <footer>
-          <p>T.n.T Briggs Design {year} | Design by Kyle Caltrider</p>
+          <p>{this.renderPageElement("Home", "shop", "Loading Shop...")} {year} | Design by Kyle Caltrider</p>
         </footer>
       </div>
     );
