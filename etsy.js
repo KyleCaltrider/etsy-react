@@ -2,7 +2,7 @@ const axios = require('axios');
 const rateLimiter = require('axios-rate-limit');
 const controller = rateLimiter(axios.create(), {maxRequests: 1, perMilliseconds: 2000})
 
-class etsy {
+class Etsy {
    constructor() {
       this.base = "https://openapi.etsy.com/v2/";
    }
@@ -15,4 +15,4 @@ class etsy {
    }
 }
 
-module.exports = etsy;
+module.exports = Etsy;
