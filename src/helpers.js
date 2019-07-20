@@ -1,5 +1,10 @@
 const helpers = {
     cleanText(text) {
+        // Used to clean listing data coming from Etsy. It's pretty basic now.
+        // - Converts Unicode values to Symbols
+        // - Removes links
+        // - Removes suspected HTML elements
+        
         // Unicode to ASCII conversion
         text = text.replace(/&#\d+;/gi, unicode => String.fromCharCode(unicode.match(/\d+/)[0]));
         text = text.replace(/&quot;/gi, '"');
@@ -16,6 +21,8 @@ const helpers = {
       },
 
     randomWords(count) {
+        // This function was mostly just used in development to generate fake listing data
+        
       const randomNumb = () => {
         let num = 91;
         while ([91, 92, 93, 94, 95, 96].includes(num)){
